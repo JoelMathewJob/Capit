@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {Link} from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -7,35 +8,43 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import MovieIcon from '@mui/icons-material/Movie';
 
-function sidebar({username, dp}) {
+function sidebar({username, dp, active, onLinkClick}) {
+
+   
+        const [activeLink, setActiveLink] = useState(active);
+    
+           
+    
     return (
-        <div className="flex h-screen flex-col justify-between border-e bg-white ">
+        <div className="flex flex-col justify-between h-screen bg-white border-e ">
             <div className="px-10 py-6">
-                <span className="grid h-16 w-36 place-content-center rounded-lg bg-gray-100 text-3xl font-[poppins] font-medium">
+                <span className="grid h-16 w-40 place-content-center rounded-lg bg-gray-100 text-3xl font-[poppins] font-medium">
                     Capit.
                 </span>
 
                 <ul className="my-6 space-y-1 leading-9">
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg bg-gray-100 px-4 py-2  font-medium text-gray-700 align-middle"
+                        <Link
+                            
+                            className="block px-4 py-2 font-medium align-middle rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('home');onLinkClick('home')}}
+                            style={{backgroundColor:activeLink === 'home' ? 'rgb(243 244 246)' : '', color: activeLink === 'home' ? 'rgb(55 65 81)' : 'rgb(107 114 128)' } }
                         ><HomeIcon/>
-                          <span className='align-middle ml-2'> Home</span> 
-                        </a>
+                          <span className='ml-2 align-middle'> Home</span> 
+                        </Link>
                     </li>
 
                     {/* <li>
                         <details className="group [&_summary::-webkit-details-marker]:hidden">
                             <summary
-                                className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
                             >
-                                <span className=" font-medium"> Teams </span>
+                                <span className="font-medium "> Teams </span>
 
-                                <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                                <span className="transition duration-300 shrink-0 group-open:-rotate-180">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5"
+                                        className="w-5 h-5"
                                         viewBox="0 0 20 20"
                                         fill="currentColor"
                                     >
@@ -48,89 +57,103 @@ function sidebar({username, dp}) {
                                 </span>
                             </summary>
 
-                            <ul className="mt-2 space-y-1 px-4">
+                            <ul className="px-4 mt-2 space-y-1">
                                 <li>
-                                    <a
-                                        href="#"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                    <Link
+                                        to="#"
+                                        className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
                                     >
                                         Banned Users
-                                    </a>
+                                    </Link>
                                 </li>
 
                                 <li>
-                                    <a
-                                        href="#"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                    <Link
+                                        to="#"
+                                        className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
                                     >
                                         Calendar
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </details>
                     </li> */}
 
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg px-4 py-2  font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        <Link
+                            
+                            className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('search');onLinkClick('search')}}
+                            style={{backgroundColor:activeLink === 'search' ? 'rgb(243 244 246)' : '', color: activeLink === 'search' ? 'rgb(55 65 81)' : '' } }
                         ><SearchIcon/>
-                            <span className='align-middle ml-2'> Search</span>
-                        </a>
+                            <span className='ml-2 align-middle'> Search</span>
+                        </Link>
                     </li>
 
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg px-4 py-2 font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        <Link
+                            
+                            className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('explore'); onLinkClick('explore')}}
+                            style={{backgroundColor:activeLink === 'explore' ? 'rgb(243 244 246)' : '', color: activeLink === 'explore' ? 'rgb(55 65 81)' : '' } }
                         ><ExploreIcon/>
-                            <span className='align-middle ml-2'> Explore</span>
-                        </a>
+                            <span className='ml-2 align-middle'> Explore</span>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg px-4 py-2 font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        <Link
+                            to="#"
+                            className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('reels');onLinkClick('reels')}}
+                            style={{backgroundColor:activeLink === 'reels' ? 'rgb(243 244 246)' : '', color: activeLink === 'reels' ? 'rgb(55 65 81)' : '' } }
                         ><MovieIcon/>
-                            <span className='align-middle ml-2'> Reels</span>
-                        </a>
+                            <span className='ml-2 align-middle'> Reels</span>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg px-4 py-2 font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        <Link
+                            to="#"
+                            className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('messages'),onLinkClick('messages')}}
+                            style={{backgroundColor:activeLink === 'messages' ? 'rgb(243 244 246)' : '', color: activeLink === 'messages' ? 'rgb(55 65 81)' : '' } }
                         ><ForumIcon/>
-                            <span className='align-middle ml-2'> Messages</span>
-                        </a>
+                            <span className='ml-2 align-middle'> Messages</span>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg px-4 py-2 font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        <Link
+                            to="#"
+                            className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('notification');onLinkClick('messages')}}
+                            style={{backgroundColor:activeLink === 'notification' ? 'rgb(243 244 246)' : '', color: activeLink === 'notification' ? 'rgb(55 65 81)' : '' } }
                         ><NotificationsNoneIcon/>
-                            <span className='align-middle ml-2'> Notifications</span>
-                        </a>
+                            <span className='ml-2 align-middle'> Notifications</span>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            className="block rounded-lg px-4 py-2 font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                        <Link
+                            to="#"
+                            className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                            onClick={()=>{setActiveLink('create');onLinkClick('messages')}}
+                            style={{backgroundColor:activeLink === 'create' ? 'rgb(243 244 246)' : '', color: activeLink === 'create' ? 'rgb(55 65 81)' : '' } }
                         ><AddCircleOutlineIcon/>
-                            <span className='align-middle ml-2'> Create</span>
-                        </a>
+                            <span className='ml-2 align-middle'> Create</span>
+                        </Link>
                     </li>
 
                     <li>
                         <details className="group [&_summary::-webkit-details-marker]:hidden">
                             <summary
-                                className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
+                                onClick={()=>{setActiveLink('account')}}
+                            style={{backgroundColor:activeLink === 'account' ? 'rgb(243 244 246)' : '', color: activeLink === 'account' ? 'rgb(55 65 81)' : '' } }
                             >
-                                <span className=" font-medium"> Account </span>
+                                <span className="font-medium "> Account </span>
 
-                                <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                                <span className="transition duration-300 shrink-0 group-open:-rotate-180">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5"
+                                        className="w-5 h-5"
                                         viewBox="0 0 20 20"
                                         fill="currentColor"
                                     >
@@ -143,24 +166,24 @@ function sidebar({username, dp}) {
                                 </span>
                             </summary>
 
-                            <ul className="mt-2 space-y-1 px-4">
+                            <ul className="px-4 mt-2 space-y-1">
                                 <li>
-                                    <a
-                                        href="#"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                    <Link
+                                        to="#"
+                                        className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
                                     >
                                         Settings
-                                    </a>
+                                    </Link>
                                 </li>
 
-                                <li>
-                                    <a
-                                        href="#"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                                {/* <li>
+                                    <Link
+                                        to="#"
+                                        className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
                                     >
                                         Security
-                                    </a>
-                                </li>
+                                    </Link>
+                                </li> */}
 
                                 <li>
                                     <form action="#">
@@ -179,22 +202,22 @@ function sidebar({username, dp}) {
             </div>
 
             <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">
-                <a href="#" className="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
+                <Link to="#" className="flex items-center gap-2 p-4 bg-white hover:bg-gray-50">
                     <img
                         alt=""
                         src={dp}
-                        className="size-10 rounded-full object-cover"
+                        className="object-cover rounded-full size-10"
                     />
 
                     <div>
                         <p className="text-xs">
-                            <strong className="block font-medium text-base hover:text-gray-700 text-gray-500 " >Profile</strong>
-                            {/* <span className='align-middle ml-2 font-medium'> Profile</span> */}
+                            <strong className="block text-base font-medium text-gray-500 hover:text-gray-700 " >Profile</strong>
+                            {/* <span className='ml-2 font-medium align-middle'> Profile</span> */}
 
                             
                         </p>
                     </div>
-                </a>
+                </Link>
             </div>
         </div>
     )
