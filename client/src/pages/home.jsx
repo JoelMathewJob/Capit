@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/sidebar'
-import Post from '../components/post'
+import Postsection from '../components/postsection'
+
 import Storybar from '../components/storybar'
 import Downbar from '../components/downbar'
 import Search from '../pages/search'
+import Explore from '../components/explore'
 
 import pic from '../assets/login.png'
 
@@ -17,8 +19,8 @@ function home() {
     };
 
     return (
-        <div className='flex flex-col '>
-            <div className='fixed min-[500px]:hidden lg:block'>
+        <div className='flex'>
+            <div className='fixed hidden lg:block'>
                 <Sidebar
                     onLinkClick={handleViewChange}
                     active={selectedView}
@@ -26,90 +28,86 @@ function home() {
                     dp={pic} />
             </div>
 
-            <div className="relative flex flex-col items-center justify-center lg:w-1/2 lg:left-80" id='centerdiv'>
-                <div className="sticky top-0 z-10 bg-white lg:block">
 
-                    {selectedView === 'home' && <Storybar />}
+            <div className='relative flex flex-col lg:left-96 left-36 '>
 
-                </div>
+                <div className="flex flex-col items-center justify-center lg:w-full " id='centerdiv'>
+                    <div className="sticky top-0 z-10 bg-white ">
 
-                <div className='relative -top-10' >
+                        {selectedView === 'home' && <Storybar />}
+
+                    </div>
 
 
-                    {selectedView === 'home' && (
+
+                    {selectedView === 'home' && <Postsection />}
+
+
+                    {selectedView === 'search' && (
                         <>
-                            <Post
-                                username='joel_mathew36'
-                                caption='fantastic demo loeererererererererrerererererererereijfej enenie'
-                                location='Pnvel, Mumbai'
-                                dp={pic}
-                                img={pic}
-                            />
-                            <Post
-                                username='joel_mathew36'
-                                caption='fantastic demo loeererererererererrerererererererereijfej enenie'
-                                location='Pnvel, Mumbai'
-                                dp={pic}
-                                img={pic}
-                            />
-                            <Post
-                                username='joel_mathew36'
-                                caption='fantastic demo loeererererererererrerererererererereijfej enenie'
-                                location='Pnvel, Mumbai'
-                                dp={pic}
-                                img={pic}
-                            />
-                            {/* Repeat the <Post /> component as needed */}
+                            {/* <div className=' min-[500px]:hidden lg:block items-center'>
+
+                            <Storybar />
+                            <Postsection />
+                        </div> */}
+                            <div className='relative lg:-left-36 sm:w-full'>
+                                <Search />
+
+                            </div>
+
                         </>
                     )}
 
-                  
-
-                </div>
-
-                {selectedView === 'search' && (
-                        <div>
-                            <Search/>
-                        </div>
-                    )}
-
                     {selectedView === 'explore' && (
-                        <div>
-                            {/* Your explore component or content */}
-                            <h2>Explore Content</h2>
+                        <div className='relative w-2/3 m-16 lg:-left-16 sm:w-full'>
+
+                            <Explore />
                         </div>
                     )}
 
                     {selectedView === 'reels' && (
                         <div>
-                            {/* Your reels component or content */}
+
                             <h2>Reels Content</h2>
                         </div>
                     )}
 
                     {selectedView === 'messages' && (
                         <div>
-                            {/* Your messages component or content */}
+
                             <h2>Messages Content</h2>
                         </div>
                     )}
 
                     {selectedView === 'notifications' && (
                         <div>
-                            {/* Your notifications component or content */}
+
                             <h2>Notifications Content</h2>
                         </div>
                     )}
 
                     {selectedView === 'create' && (
                         <div>
-                            {/* Your create component or content */}
+
                             <h2>Create Content</h2>
                         </div>
                     )}
-                <div className='fixed bottom-0 w-full lg:hidden'>
-                    <Downbar />
+
+                    {selectedView === 'settings' && (
+                        <div>
+
+                            <h2>Settings  Content</h2>
+                        </div>
+                    )}
+
+
+
+                    <div className='fixed bottom-0 w-full lg:hidden'>
+                        <Downbar />
+                    </div>
                 </div>
+
+
             </div>
         </div>
     )

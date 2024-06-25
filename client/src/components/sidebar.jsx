@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -8,13 +8,9 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import MovieIcon from '@mui/icons-material/Movie';
 
-function sidebar({username, dp, active, onLinkClick}) {
+function sidebar({ username, dp, active, onLinkClick }) {
+    const [activeLink, setActiveLink] = useState(active);
 
-   
-        const [activeLink, setActiveLink] = useState(active);
-    
-           
-    
     return (
         <div className="flex flex-col justify-between h-screen bg-white border-e ">
             <div className="px-10 py-6">
@@ -25,12 +21,12 @@ function sidebar({username, dp, active, onLinkClick}) {
                 <ul className="my-6 space-y-1 leading-9">
                     <li>
                         <Link
-                            
+
                             className="block px-4 py-2 font-medium align-middle rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('home');onLinkClick('home')}}
-                            style={{backgroundColor:activeLink === 'home' ? 'rgb(243 244 246)' : '', color: activeLink === 'home' ? 'rgb(55 65 81)' : 'rgb(107 114 128)' } }
-                        ><HomeIcon/>
-                          <span className='ml-2 align-middle'> Home</span> 
+                            onClick={() => { setActiveLink('home'); onLinkClick('home') }}
+                            style={{ backgroundColor: activeLink === 'home' ? 'rgb(243 244 246)' : '', color: activeLink === 'home' ? 'rgb(55 65 81)' : 'rgb(107 114 128)' }}
+                        ><HomeIcon />
+                            <span className='ml-2 align-middle'> Home</span>
                         </Link>
                     </li>
 
@@ -81,22 +77,22 @@ function sidebar({username, dp, active, onLinkClick}) {
 
                     <li>
                         <Link
-                            
+
                             className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('search');onLinkClick('search')}}
-                            style={{backgroundColor:activeLink === 'search' ? 'rgb(243 244 246)' : '', color: activeLink === 'search' ? 'rgb(55 65 81)' : '' } }
-                        ><SearchIcon/>
+                            onClick={() => { setActiveLink('search'); onLinkClick('search') }}
+                            style={{ backgroundColor: activeLink === 'search' ? 'rgb(243 244 246)' : '', color: activeLink === 'search' ? 'rgb(55 65 81)' : '' }}
+                        ><SearchIcon />
                             <span className='ml-2 align-middle'> Search</span>
                         </Link>
                     </li>
 
                     <li>
                         <Link
-                            
+
                             className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('explore'); onLinkClick('explore')}}
-                            style={{backgroundColor:activeLink === 'explore' ? 'rgb(243 244 246)' : '', color: activeLink === 'explore' ? 'rgb(55 65 81)' : '' } }
-                        ><ExploreIcon/>
+                            onClick={() => { setActiveLink('explore'); onLinkClick('explore') }}
+                            style={{ backgroundColor: activeLink === 'explore' ? 'rgb(243 244 246)' : '', color: activeLink === 'explore' ? 'rgb(55 65 81)' : '' }}
+                        ><ExploreIcon />
                             <span className='ml-2 align-middle'> Explore</span>
                         </Link>
                     </li>
@@ -104,9 +100,9 @@ function sidebar({username, dp, active, onLinkClick}) {
                         <Link
                             to="#"
                             className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('reels');onLinkClick('reels')}}
-                            style={{backgroundColor:activeLink === 'reels' ? 'rgb(243 244 246)' : '', color: activeLink === 'reels' ? 'rgb(55 65 81)' : '' } }
-                        ><MovieIcon/>
+                            onClick={() => { setActiveLink('reels'); onLinkClick('reels') }}
+                            style={{ backgroundColor: activeLink === 'reels' ? 'rgb(243 244 246)' : '', color: activeLink === 'reels' ? 'rgb(55 65 81)' : '' }}
+                        ><MovieIcon />
                             <span className='ml-2 align-middle'> Reels</span>
                         </Link>
                     </li>
@@ -114,9 +110,9 @@ function sidebar({username, dp, active, onLinkClick}) {
                         <Link
                             to="#"
                             className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('messages'),onLinkClick('messages')}}
-                            style={{backgroundColor:activeLink === 'messages' ? 'rgb(243 244 246)' : '', color: activeLink === 'messages' ? 'rgb(55 65 81)' : '' } }
-                        ><ForumIcon/>
+                            onClick={() => { setActiveLink('messages'); onLinkClick('messages') }}
+                            style={{ backgroundColor: activeLink === 'messages' ? 'rgb(243 244 246)' : '', color: activeLink === 'messages' ? 'rgb(55 65 81)' : '' }}
+                        ><ForumIcon />
                             <span className='ml-2 align-middle'> Messages</span>
                         </Link>
                     </li>
@@ -124,9 +120,9 @@ function sidebar({username, dp, active, onLinkClick}) {
                         <Link
                             to="#"
                             className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('notification');onLinkClick('messages')}}
-                            style={{backgroundColor:activeLink === 'notification' ? 'rgb(243 244 246)' : '', color: activeLink === 'notification' ? 'rgb(55 65 81)' : '' } }
-                        ><NotificationsNoneIcon/>
+                            onClick={() => { setActiveLink('notifications'); onLinkClick('notifications') }}
+                            style={{ backgroundColor: activeLink === 'notifications' ? 'rgb(243 244 246)' : '', color: activeLink === 'notifications' ? 'rgb(55 65 81)' : '' }}
+                        ><NotificationsNoneIcon />
                             <span className='ml-2 align-middle'> Notifications</span>
                         </Link>
                     </li>
@@ -134,9 +130,9 @@ function sidebar({username, dp, active, onLinkClick}) {
                         <Link
                             to="#"
                             className="block px-4 py-2 font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-                            onClick={()=>{setActiveLink('create');onLinkClick('messages')}}
-                            style={{backgroundColor:activeLink === 'create' ? 'rgb(243 244 246)' : '', color: activeLink === 'create' ? 'rgb(55 65 81)' : '' } }
-                        ><AddCircleOutlineIcon/>
+                            onClick={() => { setActiveLink('create'); onLinkClick('create') }}
+                            style={{ backgroundColor: activeLink === 'create' ? 'rgb(243 244 246)' : '', color: activeLink === 'create' ? 'rgb(55 65 81)' : '' }}
+                        ><AddCircleOutlineIcon />
                             <span className='ml-2 align-middle'> Create</span>
                         </Link>
                     </li>
@@ -145,8 +141,8 @@ function sidebar({username, dp, active, onLinkClick}) {
                         <details className="group [&_summary::-webkit-details-marker]:hidden">
                             <summary
                                 className="flex items-center justify-between px-4 py-2 text-gray-500 rounded-lg cursor-pointer hover:bg-gray-100 hover:text-gray-700"
-                                onClick={()=>{setActiveLink('account')}}
-                            style={{backgroundColor:activeLink === 'account' ? 'rgb(243 244 246)' : '', color: activeLink === 'account' ? 'rgb(55 65 81)' : '' } }
+                                onClick={() => { setActiveLink('account') }}
+                                style={{ backgroundColor: activeLink === 'account' ? 'rgb(243 244 246)' : '', color: activeLink === 'account' ? 'rgb(55 65 81)' : '' }}
                             >
                                 <span className="font-medium "> Account </span>
 
@@ -171,6 +167,9 @@ function sidebar({username, dp, active, onLinkClick}) {
                                     <Link
                                         to="#"
                                         className="block px-4 py-2 text-sm font-medium text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                                        onClick={() => { setActiveLink('settings');onLinkClick('settings') }}
+                                        style={{ backgroundColor: activeLink === 'settings' ? 'rgb(243 244 246)' : '', color: activeLink === 'settings' ? 'rgb(55 65 81)' : '' }}
+
                                     >
                                         Settings
                                     </Link>
@@ -190,6 +189,7 @@ function sidebar({username, dp, active, onLinkClick}) {
                                         <button
                                             type="submit"
                                             className="w-full rounded-lg px-4 py-2 text-sm font-medium text-red-500 [text-align:_inherit] hover:bg-gray-100 "
+                                            
                                         >
                                             Logout
                                         </button>
@@ -214,7 +214,7 @@ function sidebar({username, dp, active, onLinkClick}) {
                             <strong className="block text-base font-medium text-gray-500 hover:text-gray-700 " >Profile</strong>
                             {/* <span className='ml-2 font-medium align-middle'> Profile</span> */}
 
-                            
+
                         </p>
                     </div>
                 </Link>

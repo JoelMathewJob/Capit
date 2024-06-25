@@ -4,7 +4,7 @@ function storybar() {
     return (
         <div>
             
-            <div className="max-w-full p-8 mx-auto">
+            <div className="max-w-full py-8 mx-auto">
 
 
                 <ul className="flex space-x-2 text-xs ">
