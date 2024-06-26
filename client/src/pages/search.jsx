@@ -3,7 +3,7 @@ import React from 'react';
 function Search() {
     return (
         <div className='relative h-screen p-5 bg-gray-200 border-gray-300 border-solid border-e lg:left-0 lg:w-full'>
-            <h1 className='m-5 text-2xl text-left font-bold font-[poppins]'>Search</h1>
+            <h1 className='m-5 text-2xl text-center font-bold font-[poppins]'>Search</h1>
             <div className="flex items-center justify-center">
                 <div className='relative w-full max-w-md'>
                     <input

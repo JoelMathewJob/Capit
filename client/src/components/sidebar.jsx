@@ -202,7 +202,7 @@ function sidebar({ username, dp, active, onLinkClick }) {
             </div>
 
             <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">
-                <Link to="#" className="flex items-center gap-2 p-4 bg-white hover:bg-gray-50">
+                <Link to="#" className="flex items-center gap-2 p-4 bg-white hover:bg-gray-50" onClick={() => { setActiveLink('profile');onLinkClick('profile') }}>
                     <img
                         alt=""
                         src={dp}
