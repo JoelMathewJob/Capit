@@ -6,6 +6,8 @@ import Downbar from '../components/downbar';
 import Search from '../pages/search';
 import Explore from './explore';
 import Messages from './messages';
+import Create from './create';
+import Settings from './settings'
 import Profile from './profile';
 import pic from '../assets/login.png';
 
@@ -14,6 +16,8 @@ function Home() {
 
     const handleViewChange = (view) => {
         setSelectedView(view);
+
+
     };
 
     return (
@@ -29,8 +33,9 @@ function Home() {
             </div>
 
             {/* Main Content */}
-            <div className='flex flex-col items-center justify-center w-full lg:ml-60'>
-                <div className="flex flex-col items-center justify-center w-full p-4" id='centerdiv'>
+            <div className='flex flex-col items-center justify-center w-full lg:ml-60 ' >
+
+                <div className="flex flex-col items-center justify-center w-full p-4" id='centerdiv' style={selectedView !== "home" ? {display:'none'}  : {display:'flex'}}>
                     <div className="sticky z-10 w-full bg-white">
                         {selectedView === 'home' && <Storybar />}
                     </div>
@@ -51,17 +56,9 @@ function Home() {
                         </div>
                     )}
 
-                    {selectedView === 'create' && (
-                        <div>
-                            <h2>Create Content</h2>
-                        </div>
-                    )}
 
-                    {selectedView === 'settings' && (
-                        <div>
-                            <h2>Settings Content</h2>
-                        </div>
-                    )}
+
+
                 </div>
 
                 {/* Bottom Navigation for Mobile */}
@@ -83,12 +80,24 @@ function Home() {
 
                 {selectedView === 'messages' && (
                     <div className='w-full'>
-                        <Messages  />
+                        <Messages />
+                    </div>
+                )}
+
+                {selectedView === 'create' && (
+                    <div className='w-full'>
+                        <Create/>
+                    </div>
+                )}
+
+                {selectedView === 'settings' && (
+                    <div className='w-2/3'>
+                        <Settings />
                     </div>
                 )}
 
                 {selectedView === 'profile' && (
-                    <div className='w-full'>
+                    <div className='w-2/3' >
                         <Profile />
                     </div>
                 )}

@@ -3,6 +3,9 @@ import pic from '../assets/login.png';
 
 function Profile() {
   const [status, setStatus] = useState('active');
+  const [fullName, setFullName] = useState('');
+  const [username, setUsername] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -15,6 +18,15 @@ function Profile() {
       default:
         return '';
     }
+  };
+
+  const handleSave = () => {
+    // Here you can perform actions like saving to a backend or updating state
+    console.log('Saving changes...');
+    console.log('Full Name:', fullName);
+    console.log('Username:', username);
+    console.log('Date of Birth:', dateOfBirth);
+    console.log('Status:', status);
   };
 
   return (
@@ -34,7 +46,7 @@ function Profile() {
         <div className='text-center'>
           <h1 className='text-2xl font-semibold'>Username</h1>
           <p className='text-gray-600'>Full Name</p>
-          <p className='mt-2'>This is the bio section where the user can describe themselves.</p>
+          <p className='m-5'>This is the bio section where the user can describe themselves.</p>
         </div>
         <div className='flex justify-around w-full mt-4'>
           <div className='flex flex-col items-center'>
@@ -51,22 +63,23 @@ function Profile() {
           </div>
         </div>
         <div className='flex flex-col w-full mt-4'>
-          <input type='text' placeholder='Full Name' className='p-2 mb-2 border rounded-md'/>
-          <input type='text' placeholder='Username' className='p-2 mb-2 border rounded-md'/>
-          <input type='date' placeholder='Date Of Birth' className='p-2 mb-2 border rounded-md'/>
-          <select
-            className='p-2 mb-2 border rounded-md'
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="active">Active</option>
-            <option value="busy">Busy</option>
-            <option value="off">Off</option>
-          </select>
+          
+        </div>
+        <div className='flex justify-center w-full mt-4'>
+          
         </div>
       </div>
       <div className='flex flex-wrap justify-center w-full max-w-4xl mt-5'>
         {/* Placeholder for user's posts */}
+        <div className='w-1/3 p-2'>
+          <div className='w-full h-40 bg-gray-300'></div>
+        </div>
+        <div className='w-1/3 p-2'>
+          <div className='w-full h-40 bg-gray-300'></div>
+        </div>
+        <div className='w-1/3 p-2'>
+          <div className='w-full h-40 bg-gray-300'></div>
+        </div>
         <div className='w-1/3 p-2'>
           <div className='w-full h-40 bg-gray-300'></div>
         </div>

@@ -38,10 +38,8 @@ function Messages({handleLinkClick}) {
   return (
     <div className="flex flex-col h-screen md:flex-row">
       {/* Chat list */}
-      <div className={`md:w-1/3 border-r bg-white p-4 overflow-y-auto ${showChatSection ? 'hidden md:block' : 'block'}`}>
-      <button className="text-blue-500" onClick={() => handleLinkClick('home')}>
-              Back
-            </button>
+      <div className={`md:w-1/4 border-r bg-white p-4 overflow-y-auto ${showChatSection ? 'hidden md:block' : 'block'}`}>
+      
       <h1 className='m-5 text-2xl  font-bold font-[poppins] text-center'>Chats</h1>
 
         <ul>
@@ -71,7 +69,7 @@ function Messages({handleLinkClick}) {
           <button className="text-blue-500" onClick={handleBackToList}>
             Back
           </button>
-          <h2 className="text-lg font-semibold">Chat with {selectedChat?.name}</h2>
+          <h2 className="text-lg font-semibold"> {selectedChat?.name}</h2>
           <div className="w-8"></div> {/* Placeholder for alignment */}
         </div>
 
@@ -82,7 +80,7 @@ function Messages({handleLinkClick}) {
             <button className="text-blue-500" onClick={handleBackToList}>
               Back
             </button>
-            <h2 className="text-lg font-semibold">Chat with {selectedChat?.name}</h2>
+            <h2 className="text-lg font-semibold"> {selectedChat?.name}</h2>
             <div className="w-8"></div> {/* Placeholder for alignment */}
           </div>
 

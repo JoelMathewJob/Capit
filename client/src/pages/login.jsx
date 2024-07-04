@@ -20,7 +20,8 @@ function login() {
                 console.log(result);
 
                 if (result.data === "Success") {
-                    navigate('/home')
+                    navigate('/home');
+                    
                 }
                 else alert(result.data)
             })
