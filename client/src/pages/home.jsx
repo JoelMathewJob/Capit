@@ -5,6 +5,7 @@ import Storybar from '../components/storybar';
 import Downbar from '../components/downbar';
 import Search from '../pages/search';
 import Explore from './explore';
+import Reels from './reels'
 import Messages from './messages';
 import Create from './create';
 import Settings from './settings'
@@ -35,18 +36,14 @@ function Home() {
             {/* Main Content */}
             <div className='flex flex-col items-center justify-center w-full lg:ml-60 ' >
 
-                <div className="flex flex-col items-center justify-center w-full p-4" id='centerdiv' style={selectedView !== "home" ? {display:'none'}  : {display:'flex'}}>
+                <div className="flex flex-col items-center justify-center w-full p-4" id='centerdiv' style={selectedView !== "home" ? { display: 'none' } : { display: 'flex' }}>
                     <div className="sticky z-10 w-full bg-white">
                         {selectedView === 'home' && <Storybar />}
                     </div>
 
                     {selectedView === 'home' && <Postsection />}
 
-                    {selectedView === 'reels' && (
-                        <div>
-                            <h2>Reels Content</h2>
-                        </div>
-                    )}
+
 
 
 
@@ -78,6 +75,12 @@ function Home() {
                     </div>
                 )}
 
+                {selectedView === 'reels' && (
+                    <div>
+                        <Reels/>
+                    </div>
+                )}
+
                 {selectedView === 'messages' && (
                     <div className='w-full'>
                         <Messages />
@@ -86,7 +89,7 @@ function Home() {
 
                 {selectedView === 'create' && (
                     <div className='w-full'>
-                        <Create/>
+                        <Create />
                     </div>
                 )}
 

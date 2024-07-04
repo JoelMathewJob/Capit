@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import pic from '../assets/login.png';
+import pic from '../assets/capitlogo.png';
 
 function Profile() {
   const [status, setStatus] = useState('active');
@@ -38,9 +38,7 @@ function Profile() {
             alt='Profile Pic'
             className='w-full h-full transition-all duration-300 ease-in-out rounded-full filter hover:grayscale'
           />
-          <div className='absolute inset-0 flex items-center justify-center text-lg font-bold text-white transition-opacity duration-300 ease-in-out rounded-full opacity-0 hover:opacity-100 hover:bg-slate-300'>
-            Edit
-          </div>
+          
           <div className={`absolute bottom-0 right-0 w-6 h-6 rounded-full ${getStatusColor(status)}`}></div>
         </div>
         <div className='text-center'>
