@@ -1,77 +1,59 @@
-import React, { useState } from 'react';
+import { Link } from "react-router-dom"
+import { Search, Upload, Play, User, Eye } from "lucide-react"
 
-function reels() {
-  const reellist = [
-    {
-      id: 1,
-      videoUrl: 'https://picsum.photos/200/300',
-      thumbnail: 'https://picsum.photos/500/800?random="1"',
-    },
-    {
-      id: 2,
-      videoUrl: 'https://dummyvideo.com/501x301',
-      thumbnail: 'https://picsum.photos/500/800?random="3',
-    },
-    {
-      id: 3,
-      videoUrl: 'https://dummyvideo.com/600x360',
-      thumbnail: 'https://picsum.photos/500/800?random="2"',
-    },
-    {
-      id: 4,
-      videoUrl: 'https://dummyvideo.com/601x361',
-      thumbnail: 'https://picsum.photos/500/800?random="4"',
-    },
-    {
-      id: 5,
-      videoUrl: 'https://dummyvideo.com/502x302',
-      thumbnail: 'https://picsum.photos/500/800?random="5"',
-    },
-    {
-      id: 6,
-      videoUrl: 'https://dummyvideo.com/503x303',
-      thumbnail: 'https://picsum.photos/500/800?random="6"',
-    },
-  ];
-
-  const [currentReelIndex, setCurrentReelIndex] = useState(0);
-
-  const nextReel = () => {
-    setCurrentReelIndex((prevIndex) => (prevIndex + 1) % reellist.length);
-  };
-
-  const previousReel = () => {
-    setCurrentReelIndex((prevIndex) =>
-      prevIndex === 0 ? reellist.length - 1 : prevIndex - 1
-    );
-  };
-
+export default function Reels() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black">
-      <div className="relative w-full max-w-md p-4">
-        <video
-          className="w-full h-auto"
-          src={reellist[currentReelIndex].videoUrl}
-          controls
-          poster={reellist[currentReelIndex].thumbnail}
-        />
-        <div className="absolute top-0 left-0 flex items-center justify-between w-full h-full p-4">
-          <button
-            onClick={previousReel}
-            className="p-2 text-white bg-black bg-opacity-50 rounded-full"
-          >
-            Prev
-          </button>
-          <button
-            onClick={nextReel}
-            className="p-2 text-white bg-black bg-opacity-50 rounded-full"
-          >
-            Next
-          </button>
+    <div className="container px-5 pt-4 mx-auto">
+      <h1 className="m-5 text-2xl font-bold font-[poppins] px-3 text-center lg:text-left">Reels</h1>
+      
+        <main className="container grid max-w-6xl grid-cols-1 gap-4 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {renderVideoCard("How to make a delicious pasta dish in 15 minutes", "Cooking Guru", "1.2M views", 101)}
+          {renderVideoCard("5 Productivity Hacks to Boost Your Workflow", "Productivity Guru", "750K views", 102)}
+          {renderVideoCard("The Ultimate Guide to Skincare for Beginners", "Beauty Guru", "500K views", 103)}
+          {renderVideoCard("10 Yoga Poses for Beginners to Improve Flexibility", "Yoga Instructor", "300K views", 104)}
+          {renderVideoCard("5 Easy Hairstyles for Busy Mornings", "Beauty Guru", "200K views", 110)}
+          {renderVideoCard("7 Healthy Snack Ideas for Busy People", "Nutrition Expert", "170K views", 106)}
+          {renderVideoCard("How to Kick like pro", "Inside Out", "110K views", 107)}
+          {renderVideoCard("Why marvel is the best", "Maths inUs", "850K views", 108)}
+          {renderVideoCard("Reason why peacock is green in colour", "CarryMinati", "190K views", 109)}
+        </main>
+      
+    </div>
+  )
+}
+
+function renderVideoCard(title, user, views, id) {
+  return (
+    <div className="relative overflow-hidden rounded-lg group">
+      <Link to="#" className="absolute inset-0 z-10">
+        <span className="sr-only">Play</span>
+      </Link>
+      <img
+        src={`https://picsum.photos/id/${id}/400/700`}
+        alt="Thumbnail"
+        width={400}
+        height={700}
+        className="w-full h-[400px] object-cover"
+        style={{ aspectRatio: "400/700", objectFit: "cover" }}
+      />
+      <div className="absolute inset-0 flex items-center justify-center transition-opacity opacity-0 bg-black/50 group-hover:opacity-100">
+        <button className="w-12 h-12 p-2 text-white bg-white/20 hover:bg-white/30">
+          <Play className="w-6 h-6" />
+        </button>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+        <h3 className="font-semibold text-white line-clamp-2">{title}</h3>
+        <div className="flex items-center gap-2 text-sm text-white/80">
+          <div className="flex items-center gap-1">
+            <User className="w-4 h-4" />
+            <span>{user}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Eye className="w-4 h-4" />
+            <span>{views}</span>
+          </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default reels;
